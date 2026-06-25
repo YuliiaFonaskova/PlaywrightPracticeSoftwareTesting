@@ -14,12 +14,13 @@ UI test automation project created with Playwright for the **Practice Software T
 * ✅ View product details
 * ✅ Add product to cart
 
-## Project Structure
+Project Structure
 pages/
     BasePage.js
     LoginPage.js
     MainPage.js
     ProductPage.js
+
 tests/
     login.spec.js
     search.spec.js
