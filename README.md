@@ -14,20 +14,23 @@ UI test automation project created with Playwright for the **Practice Software T
 * ✅ View product details
 * ✅ Add product to cart
 
-Project Structure
+## Project Structure
+
+```text
 pages/
-    BasePage.js
-    LoginPage.js
-    MainPage.js
-    ProductPage.js
+├── BasePage.js
+├── LoginPage.js
+├── MainPage.js
+└── ProductPage.js
 
 tests/
-    login.spec.js
-    search.spec.js
-    product.spec.js
-    cart.spec.js
+├── login.spec.js
+├── search.spec.js
+├── product.spec.js
+└── cart.spec.js
 
 playwright.config.js
+```
 
 ## Features
 * Cross-browser testing
