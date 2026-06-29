@@ -5,6 +5,7 @@ class LoginPage extends BasePage {
   constructor(page) {
     super(page);
   }
+
   get loginButton() {
     return this.page.locator('[data-test="nav-sign-in"]');
   }
@@ -25,30 +26,11 @@ class LoginPage extends BasePage {
     return this.page.locator('[data-test="login-error"]');
   }
 
-  async clickLoginButton() {
-    await this.loginButton.click();
-  }
-
-  async fillEmail(email) {
-    await this.emailField.fill(email);
-  }
-
-  async fillPassword(password) {
-    await this.passwordField.fill(password);
-  }
-
-  async clickSubmitButton() {
-    await this.submitButton.click();
-  }
-
   async login(email, password) {
-    await this.clickLoginButton();
-
-    await this.fillEmail(email);
-
-    await this.fillPassword(password);
-
-    await this.clickSubmitButton();
+    await this.loginButton.click();
+    await this.emailField.fill(email);
+    await this.passwordField.fill(password);
+    await this.submitButton.click();
   }
 
   async verifyLoginError() {
