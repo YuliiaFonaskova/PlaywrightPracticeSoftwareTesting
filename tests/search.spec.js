@@ -1,5 +1,6 @@
 const { test } = require("@playwright/test");
-const MainPage = require("../pages/MainPage");
+const MainPage = require("../business/pages/MainPage");
+const testData = require("../business/testData");
 
 test.describe("Search", () => {
   let mainPage;
@@ -11,8 +12,8 @@ test.describe("Search", () => {
   });
 
   test("Search product successfully", async () => {
-    await mainPage.searchProduct(process.env.SEARCH_REQUEST);
+    await mainPage.searchProduct(testData.product.searchRequest);
 
-    await mainPage.verifySearchResults(process.env.SEARCH_REQUEST);
+    await mainPage.verifySearchResults(testData.product.searchRequest);
   });
 });

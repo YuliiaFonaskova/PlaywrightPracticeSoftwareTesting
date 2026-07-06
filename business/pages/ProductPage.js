@@ -1,11 +1,7 @@
 const { expect } = require("@playwright/test");
-const BasePage = require("./BasePage");
+const BasePage = require("../../core/BasePage");
 
 class ProductPage extends BasePage {
-  constructor(page) {
-    super(page);
-  }
-
   get productTitle() {
     return this.page.locator('[data-test="product-name"]');
   }

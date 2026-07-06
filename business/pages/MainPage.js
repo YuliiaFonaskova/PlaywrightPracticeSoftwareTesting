@@ -1,11 +1,7 @@
-const BasePage = require("./BasePage");
+const BasePage = require("../../core/BasePage");
 const { expect } = require("@playwright/test");
 
 class MainPage extends BasePage {
-  constructor(page) {
-    super(page);
-  }
-
   get searchField() {
     return this.page.locator('[data-test="search-query"]');
   }
@@ -16,6 +12,11 @@ class MainPage extends BasePage {
 
   get productTitles() {
     return this.page.locator('[data-test="product-name"]');
+  }
+
+  async open(path = "/") {
+    await super.open(path);
+    await expect(this.productTitles.first()).toBeVisible();
   }
 
   async searchProduct(request) {
@@ -41,11 +42,12 @@ class MainPage extends BasePage {
   }
 
   async openProduct(productName) {
-    await this.page
-      .locator('[data-test="product-name"]', {
-        hasText: productName,
-      })
-      .click();
+    const product = this.page.locator('[data-test="product-name"]', {
+      hasText: productName,
+    });
+
+    await expect(product).toBeVisible();
+    await product.click();
 
     await expect(this.page).toHaveURL(/.*product/);
   }

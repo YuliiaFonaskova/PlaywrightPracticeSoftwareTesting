@@ -1,6 +1,7 @@
 const { test } = require("@playwright/test");
-const MainPage = require("../pages/MainPage");
-const ProductPage = require("../pages/ProductPage");
+const MainPage = require("../business/pages/MainPage");
+const ProductPage = require("../business/pages/ProductPage");
+const testData = require("../business/testData");
 
 test.describe("Cart", () => {
   let mainPage;
@@ -14,7 +15,7 @@ test.describe("Cart", () => {
   });
 
   test("Add product to cart", async () => {
-    await mainPage.openProduct(process.env.PRODUCT_NAME);
+    await mainPage.openProduct(testData.product.name);
 
     await productPage.addToCart();
 
