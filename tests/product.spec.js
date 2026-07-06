@@ -1,7 +1,7 @@
 const { test } = require("@playwright/test");
-
-const MainPage = require("../pages/MainPage");
-const ProductPage = require("../pages/ProductPage");
+const MainPage = require("../business/pages/MainPage");
+const ProductPage = require("../business/pages/ProductPage");
+const testData = require("../business/testData");
 
 test.describe("Product", () => {
   let mainPage;
@@ -15,8 +15,8 @@ test.describe("Product", () => {
   });
 
   test("View product details", async () => {
-    await mainPage.openProduct(process.env.PRODUCT_NAME);
+    await mainPage.openProduct(testData.product.name);
 
-    await productPage.verifyProductDetails(process.env.PRODUCT_NAME);
+    await productPage.verifyProductDetails(testData.product.name);
   });
 });

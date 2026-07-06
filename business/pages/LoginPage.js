@@ -1,11 +1,7 @@
 const { expect } = require("@playwright/test");
-const BasePage = require("./BasePage");
+const BasePage = require("../../core/BasePage");
 
 class LoginPage extends BasePage {
-  constructor(page) {
-    super(page);
-  }
-
   get loginButton() {
     return this.page.locator('[data-test="nav-sign-in"]');
   }
