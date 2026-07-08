@@ -13,7 +13,7 @@ export default defineConfig({
 
   workers: 2,
 
-  reporter: "html",
+  reporter: [["list"], ["html"]],
 
   use: {
     baseURL: "https://practicesoftwaretesting.com",
