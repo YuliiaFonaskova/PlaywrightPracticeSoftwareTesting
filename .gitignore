@@ -7,7 +7,3 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 .env
-
-# Local Claude Code config (not shared via git)
-CLAUDE.md
-.claude/
