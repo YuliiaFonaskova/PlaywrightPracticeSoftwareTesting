@@ -20,7 +20,7 @@ test.describe("Login", () => {
   test("Unsuccessful login", async () => {
     await loginPage.login(
       testData.user.invalidEmail,
-      testData.user.invalidPassword,
+      testData.user.invalidPassword
     );
 
     await loginPage.verifyLoginError();
