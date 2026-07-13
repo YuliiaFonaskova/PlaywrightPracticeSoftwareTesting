@@ -1,18 +1,22 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     tools {
         nodejs 'NodeJS 22'
     }
 
     environment {
-    USER_EMAIL = credentials('playwright-user-email')
-    USER_PASSWORD = credentials('playwright-user-password')
-    SEARCH_REQUEST = 'gloves'
-    PRODUCT_NAME = 'Combination Pliers'
-    INVALID_EMAIL = 'wrong@email.com'
-    INVALID_PASSWORD = 'wrongpassword'
-}
+        USER_EMAIL = credentials('playwright-user-email')
+        USER_PASSWORD = credentials('playwright-user-password')
+        SEARCH_REQUEST = 'gloves'
+        PRODUCT_NAME = 'Combination Pliers'
+        INVALID_EMAIL = 'wrong@email.com'
+        INVALID_PASSWORD = 'wrongpassword'
+    }
 
     stages {
         stage('Clone repository') {
@@ -42,8 +46,10 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/**/*',
+            archiveArtifacts(
+                artifacts: 'playwright-report/**/*',
                 allowEmptyArchive: true
+            )
         }
     }
 }
