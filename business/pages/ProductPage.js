@@ -14,18 +14,19 @@ class ProductPage extends BasePage {
     return this.page.locator('[data-test="cart-quantity"]');
   }
 
-  async verifyProductDetails(productName) {
-    await expect(this.productTitle).toContainText(productName);
+  async verifyProductTitle(productName) {
+    await expect(this.productTitle).toHaveText(productName);
   }
 
   async addToCart() {
     await this.addToCartButton.click();
   }
 
+  // Wait until the cart quantity updates to a positive number.
   async verifyCartIsNotEmpty() {
-    const quantity = Number(await this.cartQuantity.innerText());
-
-    expect(quantity).toBeGreaterThan(0);
+    await expect
+      .poll(async () => Number(await this.cartQuantity.innerText()))
+      .toBeGreaterThan(0);
   }
 }
 

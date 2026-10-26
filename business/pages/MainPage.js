@@ -1,4 +1,5 @@
 const BasePage = require("../../core/BasePage");
+const routes = require("../routes");
 const { expect } = require("@playwright/test");
 
 class MainPage extends BasePage {
@@ -14,7 +15,7 @@ class MainPage extends BasePage {
     return this.page.locator('[data-test="product-name"]');
   }
 
-  async open(path = "/") {
+  async open(path = routes.home) {
     await super.open(path);
     await expect(this.productTitles.first()).toBeVisible();
   }
@@ -24,10 +25,15 @@ class MainPage extends BasePage {
 
     await expect(this.searchField).toHaveValue(request);
 
+    const searchResponse = this.page.waitForResponse((response) =>
+      response.url().includes(routes.productSearchEndpoint)
+    );
+
     await this.searchButton.click();
 
-    // Wait until all network requests triggered by search are completed
-    await this.page.waitForLoadState("networkidle");
+    const response = await searchResponse;
+    expect(response.status()).toBe(200);
+
     await expect(this.productTitles.first()).toBeVisible();
   }
 
@@ -37,7 +43,9 @@ class MainPage extends BasePage {
     expect(titles.length).toBeGreaterThan(0);
 
     for (const title of titles) {
-      expect(title.toLowerCase()).toContain(searchRequest.toLowerCase());
+      expect(title.trim().toLowerCase()).toContain(
+        searchRequest.trim().toLowerCase()
+      );
     }
   }
 
@@ -46,10 +54,11 @@ class MainPage extends BasePage {
       hasText: productName,
     });
 
+    await expect(product).toHaveCount(1);
     await expect(product).toBeVisible();
     await product.click();
 
-    await expect(this.page).toHaveURL(/.*product/);
+    await expect(this.page).toHaveURL(routes.product);
   }
 }
 module.exports = MainPage;

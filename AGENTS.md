@@ -48,6 +48,10 @@ The Jenkinsfile (`Jenkinsfile`) sets env vars inline (no secrets) and runs `npm 
 
 All credentials and test values come from environment variables (read via `dotenv.config()` at top of `playwright.config.js`, then consumed by `business/testData.js`). Do not hardcode values in specs.
 
+## Qase MCP
+
+Use the Qase MCP exclusively for all interaction with Qase. Do not access Qase through its web UI, REST API directly, CLI, or other integrations. Use MCP tools for both reads and writes, and follow their tool documentation before calling them. Do not create or modify Qase data unless the user explicitly asks for that change.
+
 ## Playwright Config Notes
 
 - `baseURL`: `https://practicesoftwaretesting.com` (set in config; use `page.goto("/")` in `BasePage.open`)

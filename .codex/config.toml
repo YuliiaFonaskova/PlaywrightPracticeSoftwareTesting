@@ -1,0 +1,8 @@
+# [mcp_servers.qase]
+# command = "powershell.exe"
+# args = [
+#   "-NoProfile",
+#   "-NonInteractive",
+#   "-Command",
+#   "$env:QASE_API_TOKEN = (Get-Content -Raw 'C:/Users/andre/.config/opencode/qase-token').Trim(); & node 'C:/Users/andre/.config/opencode/qase-mcp/node_modules/@qase/mcp-server/build/index.js'",
+# ]

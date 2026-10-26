@@ -14,9 +14,9 @@ test.describe("Product", () => {
     await mainPage.open();
   });
 
-  test("View product details", async () => {
+  test("View product title", async () => {
     await mainPage.openProduct(testData.product.name);
 
-    await productPage.verifyProductDetails(testData.product.name);
+    await productPage.verifyProductTitle(testData.product.name);
   });
 });
