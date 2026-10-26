@@ -13,11 +13,11 @@ npm test
 
 Three layers, import style is CommonJS (`require`/`module.exports`):
 
-| Layer | Directory | Purpose |
-|-------|-----------|---------|
-| Core | `core/BasePage.js` | Low-level helpers (open, click, fill, getText) |
+| Layer    | Directory                                     | Purpose                                                                      |
+| -------- | --------------------------------------------- | ---------------------------------------------------------------------------- |
+| Core     | `core/BasePage.js`                            | Low-level helpers (open, click, fill, getText)                               |
 | Business | `business/pages/*.js`, `business/testData.js` | Page Objects + selectors via `data-test` attributes; test data from env vars |
-| Tests | `tests/*.spec.js` | Playwright test specs |
+| Tests    | `tests/*.spec.js`                             | Playwright test specs                                                        |
 
 Every Page Object extends `BasePage`, whose constructor takes a Playwright `page` fixture.
 
@@ -27,16 +27,16 @@ ESLint config (`eslint.config.js`) declares `sourceType: "module"`, but the code
 
 ## Commands
 
-| Action | Command |
-|--------|---------|
-| Run all tests | `npm test` (or `npx playwright test`) |
-| Run one spec | `npx playwright test tests/login.spec.js` |
-| Run one browser | `npx playwright test --project=chromium` |
-| Run headed | `npm run test:headed` (`--headed`) |
-| Show HTML report | `npm run report` |
-| Lint | `npm run lint` |
-| Format (write) | `npm run format` |
-| Check format (CI) | `npx prettier --check .` |
+| Action            | Command                                   |
+| ----------------- | ----------------------------------------- |
+| Run all tests     | `npm test` (or `npx playwright test`)     |
+| Run one spec      | `npx playwright test tests/login.spec.js` |
+| Run one browser   | `npx playwright test --project=chromium`  |
+| Run headed        | `npm run test:headed` (`--headed`)        |
+| Show HTML report  | `npm run report`                          |
+| Lint              | `npm run lint`                            |
+| Format (write)    | `npm run format`                          |
+| Check format (CI) | `npx prettier --check .`                  |
 
 ## CI Order
 
