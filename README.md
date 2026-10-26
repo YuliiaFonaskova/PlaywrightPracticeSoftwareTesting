@@ -1,16 +1,12 @@
 # Playwright Practice Software Testing
 
 UI test automation project created with Playwright for the **Practice Software Testing** application.
-The project follows layered architecture:
 
-Core layer:
-Contains reusable framework functionality that is not related to a specific application.
+The project follows a layered architecture:
 
-Business layer:
-Contains Page Objects and business logic of the tested application.
-
-Tests layer:
-Contains automated tests and Playwright configuration.
+- **Core layer** — reusable framework functionality that is not related to a specific application.
+- **Business layer** — Page Objects, application routes, and test data.
+- **Tests layer** — automated test scenarios and Playwright configuration.
 
 ## Technologies
 
@@ -24,7 +20,7 @@ Contains automated tests and Playwright configuration.
 - ✅ Successful login
 - ✅ Unsuccessful login
 - ✅ Search product
-- ✅ View product details
+- ✅ View product title
 - ✅ Add product to cart
 
 ## Project Structure
@@ -34,59 +30,62 @@ core/
 └── BasePage.js
 
 business/
-├── testData.js
-└── pages/
-    ├── LoginPage.js
-    ├── MainPage.js
-    └── ProductPage.js
+├── pages/
+│   ├── LoginPage.js
+│   ├── MainPage.js
+│   └── ProductPage.js
+├── routes.js
+└── testData.js
 
 tests/
+├── cart.spec.js
 ├── login.spec.js
-├── search.spec.js
 ├── product.spec.js
-└── cart.spec.js
+└── search.spec.js
 
 playwright.config.js
 ```
 
 ## Features
 
-- Cross-browser testing
+- Cross-browser testing:
   - Chromium
   - Firefox
   - WebKit
-
-- Parallel execution (2 workers)
-- Retry failed tests (2 retries)
-- Headless execution
-- Environment variables stored in `.env`
+- Parallel execution with 2 workers
+- 2 retries for failed tests
+- Headless execution by default
+- Test data configured through environment variables in `.env`
 
 ## Installation
 
 ```bash
 npm install
+npx playwright install
 ```
+
+Copy `.env.example` to `.env`. Update the values in `.env` if needed.
 
 ## Run all tests
 
 ```bash
-npx playwright test
+npm test
 ```
 
 ## Run tests in Chromium
 
 ```bash
-npx playwright test --project=chromium
+npm run test:chrome
 ```
 
 ## Run tests in headed mode
 
 ```bash
-npx playwright test --headed
+npm run test:headed
 ```
 
-## Generate HTML report
+## Generate and open the HTML report
 
 ```bash
-npx playwright show-report
+npm run report
 ```

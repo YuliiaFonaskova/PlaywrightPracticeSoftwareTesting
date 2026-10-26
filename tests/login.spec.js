@@ -9,6 +9,7 @@ test.describe("Login", () => {
     loginPage = new LoginPage(page);
 
     await loginPage.open();
+    await loginPage.openLoginPage();
   });
 
   test("Successful login", async () => {
@@ -23,6 +24,6 @@ test.describe("Login", () => {
       testData.user.invalidPassword
     );
 
-    await loginPage.verifyLoginError();
+    await loginPage.verifyLoginError(testData.messages.loginError);
   });
 });
