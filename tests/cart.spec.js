@@ -49,10 +49,10 @@ test.describe("Cart", () => {
   test("CART-04 Cart item persistence across page navigation", async () => {
     await mainPage.openProduct(testData.product.name);
     await productPage.addToCart();
-    await productPage.verifyCartQuantity(1);
+    await productPage.verifyCartIsNotEmpty();
 
-    await productPage.navigateHome();
+    await productPage.openCart();
 
-    await productPage.verifyCartQuantity(1);
+    await cartPage.verifyCartItem(testData.product.name, 1);
   });
 });
