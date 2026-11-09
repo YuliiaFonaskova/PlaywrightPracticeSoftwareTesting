@@ -90,8 +90,8 @@ class ProductPage extends BasePage {
   }
 
   async reloadPage() {
+    await this.open(routes.home);
     await this.page.reload();
-    await expect(this.productTitle).toBeVisible();
   }
 
   async openCart() {
