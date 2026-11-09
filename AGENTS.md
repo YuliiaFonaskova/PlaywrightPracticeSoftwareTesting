@@ -13,11 +13,12 @@ npm test
 
 Three layers, import style is CommonJS (`require`/`module.exports`):
 
-| Layer    | Directory                                     | Purpose                                                                      |
-| -------- | --------------------------------------------- | ---------------------------------------------------------------------------- |
-| Core     | `core/BasePage.js`                            | Low-level helpers (open, click, fill, getText)                               |
-| Business | `business/pages/*.js`, `business/testData.js` | Page Objects + selectors via `data-test` attributes; test data from env vars |
-| Tests    | `tests/*.spec.js`                             | Playwright test specs                                                        |
+| Layer    | Directory                              | Purpose                                              |
+| -------- | -------------------------------------- | ---------------------------------------------------- |
+| Core     | `core/BasePage.js`                     | Low-level helpers (open, click, fill, getText)       |
+| Business | `business/pages/*.js`, `business/*.js` | Page Objects + selectors via `data-test` attributes  |
+| Fixtures | `fixtures/*.json`                      | Static test data (messages, testData, invalid users) |
+| Tests    | `tests/*.spec.js`                      | Playwright test specs                                |
 
 Every Page Object extends `BasePage`, whose constructor takes a Playwright `page` fixture.
 
@@ -40,13 +41,13 @@ ESLint config (`eslint.config.js`) declares `sourceType: "module"`, but the code
 
 ## CI Order
 
-`.github/workflows/playwright.yml` runs: `npm run lint` → `npx prettier --check .` → `npx playwright test`. GitHub Actions requires secrets (`USER_EMAIL`, `USER_PASSWORD`, `SEARCH_REQUEST`, `PRODUCT_NAME`, `INVALID_EMAIL`, `INVALID_PASSWORD`) — the repo has no defaults; CI will fail without them.
+`.github/workflows/playwright.yml` runs: `npm run lint` → `npx prettier --check .` → `npx playwright test`. GitHub Actions requires secrets (`USER_EMAIL`, `USER_PASSWORD`) — CI will fail without them.
 
-The Jenkinsfile (`Jenkinsfile`) sets env vars inline (no secrets) and runs `npm ci` → `npx playwright install` → `npm test`.
+The Jenkinsfile (`Jenkinsfile`) uses credentials (`USER_EMAIL`, `USER_PASSWORD`) and runs `npm ci` → `npx playwright install` → `npm test`.
 
 ## Test Data
 
-All credentials and test values come from environment variables (read via `dotenv.config()` at top of `playwright.config.js`, then consumed by `business/testData.js`). Do not hardcode values in specs.
+Valid user credentials come from environment variables (`USER_EMAIL`, `USER_PASSWORD`, read via `dotenv.config()` at top of `playwright.config.js`). Static test data, invalid credentials, and error messages are stored in `fixtures/*.json` and imported directly into specs. Do not hardcode values in specs.
 
 ## Qase MCP
 

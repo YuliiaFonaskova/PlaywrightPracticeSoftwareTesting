@@ -14,10 +14,6 @@ jobs:
     env:
       USER_EMAIL: ${{ secrets.USER_EMAIL }}
       USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-      SEARCH_REQUEST: ${{ secrets.SEARCH_REQUEST }}
-      PRODUCT_NAME: ${{ secrets.PRODUCT_NAME }}
-      INVALID_EMAIL: ${{ secrets.INVALID_EMAIL }}
-      INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4

@@ -50,6 +50,11 @@ Detailed test cases, preconditions, step-by-step UI actions, and expansion roadm
 docs/
 └── test-cases.md
 
+fixtures/
+├── messages.json
+├── testData.json
+└── users.json
+
 core/
 └── BasePage.js
 
@@ -58,8 +63,7 @@ business/
 │   ├── LoginPage.js
 │   ├── MainPage.js
 │   └── ProductPage.js
-├── routes.js
-└── testData.js
+└── routes.js
 
 tests/
 ├── cart.spec.js

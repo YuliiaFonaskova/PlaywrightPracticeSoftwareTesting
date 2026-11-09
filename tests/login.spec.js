@@ -1,6 +1,7 @@
 const { test } = require("@playwright/test");
 const LoginPage = require("../business/pages/LoginPage");
-const testData = require("../business/testData");
+const users = require("../fixtures/users.json");
+const messages = require("../fixtures/messages.json");
 
 test.describe("Login", () => {
   let loginPage;
@@ -13,17 +14,14 @@ test.describe("Login", () => {
   });
 
   test("AUTH-01 Successful login", async () => {
-    await loginPage.login(testData.user.email, testData.user.password);
+    await loginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
 
     await loginPage.verifySuccessfulLogin();
   });
 
   test("AUTH-02 Unsuccessful login", async () => {
-    await loginPage.login(
-      testData.user.invalidEmail,
-      testData.user.invalidPassword
-    );
+    await loginPage.login(users.invalid.email, users.invalid.password);
 
-    await loginPage.verifyLoginError(testData.messages.loginError);
+    await loginPage.verifyLoginError(messages.loginError);
   });
 });

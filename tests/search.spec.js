@@ -1,6 +1,6 @@
 const { test } = require("@playwright/test");
 const MainPage = require("../business/pages/MainPage");
-const testData = require("../business/testData");
+const testData = require("../fixtures/testData.json");
 
 test.describe("Search", () => {
   let mainPage;

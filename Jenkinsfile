@@ -12,10 +12,6 @@ pipeline {
     environment {
         USER_EMAIL = credentials('playwright-user-email')
         USER_PASSWORD = credentials('playwright-user-password')
-        SEARCH_REQUEST = 'gloves'
-        PRODUCT_NAME = 'Combination Pliers'
-        INVALID_EMAIL = 'wrong@email.com'
-        INVALID_PASSWORD = 'wrongpassword'
     }
 
     stages {
