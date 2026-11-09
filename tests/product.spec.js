@@ -14,7 +14,7 @@ test.describe("Product", () => {
     await mainPage.open();
   });
 
-  test("View product title", async () => {
+  test("PRD-01 View product title", async () => {
     await mainPage.openProduct(testData.product.name);
 
     await productPage.verifyProductTitle(testData.product.name);

@@ -11,7 +11,7 @@ test.describe("Search", () => {
     await mainPage.open();
   });
 
-  test("Search product successfully", async () => {
+  test("SRCH-01 Search product successfully", async () => {
     await mainPage.searchProduct(testData.product.searchRequest);
 
     await mainPage.verifySearchResults(testData.product.searchRequest);

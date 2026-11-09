@@ -14,7 +14,7 @@ test.describe("Cart", () => {
     await mainPage.open();
   });
 
-  test("Add product to cart", async () => {
+  test("CART-01 Add product to cart", async () => {
     await mainPage.openProduct(testData.product.name);
 
     await productPage.addToCart();

@@ -12,13 +12,13 @@ test.describe("Login", () => {
     await loginPage.openLoginPage();
   });
 
-  test("Successful login", async () => {
+  test("AUTH-01 Successful login", async () => {
     await loginPage.login(testData.user.email, testData.user.password);
 
     await loginPage.verifySuccessfulLogin();
   });
 
-  test("Unsuccessful login", async () => {
+  test("AUTH-02 Unsuccessful login", async () => {
     await loginPage.login(
       testData.user.invalidEmail,
       testData.user.invalidPassword
