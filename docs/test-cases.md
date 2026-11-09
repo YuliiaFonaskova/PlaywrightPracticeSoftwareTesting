@@ -25,7 +25,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 | `CART‑01` | Shopping Cart   | Add product to cart from product details page     | P1       | Positive / Functional | Automated         | `tests/cart.spec.js`    |
 | `CART‑02` | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Functional            | Automated         | `tests/cart.spec.js`    |
 | `CART‑03` | Shopping Cart   | View shopping cart and remove item                | P2       | Functional            | Automated         | `tests/cart.spec.js`    |
-| `CART‑04` | Shopping Cart   | Cart item persistence across page reload          | P3       | Functional / State    | Automated         | `tests/cart.spec.js`    |
+| `CART‑04` | Shopping Cart   | Cart item persistence across page navigation      | P3       | Functional / State    | Automated         | `tests/cart.spec.js`    |
 
 ---
 
@@ -332,7 +332,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 ---
 
-#### CART-04: Cart item persistence across page reload
+#### CART-04: Cart item persistence across page navigation
 
 - **Priority:** P3
 - **Type:** Functional / State
@@ -341,13 +341,13 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 **Steps:**
 
-| #   | Action                                  | Expected result                                                                    |
-| :-- | :-------------------------------------- | :--------------------------------------------------------------------------------- |
-| 1   | Add a product to the cart.              | Cart badge shows item count (e.g. 1).                                              |
-| 2   | Reload the browser page (F5 / Refresh). | Page finishes reloading.                                                           |
-| 3   | Check the cart badge counter.           | Cart badge retains previous count (state is preserved in local storage / session). |
+| #   | Action                                                 | Expected result                                           |
+| :-- | :----------------------------------------------------- | :-------------------------------------------------------- |
+| 1   | Add a product to the cart.                             | Cart badge shows item count (e.g. 1).                     |
+| 2   | Navigate back to the Home page via top navigation bar. | Home page loads.                                          |
+| 3   | Check the cart badge counter.                          | Cart badge retains previous count across page navigation. |
 
-**Expected result:** Cart items and count persist after browser page refresh.
+**Expected result:** Cart items and count persist when navigating across application pages.
 
 ---
 

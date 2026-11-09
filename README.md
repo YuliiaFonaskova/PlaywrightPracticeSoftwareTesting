@@ -42,7 +42,7 @@ Detailed test cases, preconditions, step-by-step UI actions, and expansion roadm
 | `CART‑01` | Shopping Cart   | Add product to cart from product details page     | P1       | Automated         | `tests/cart.spec.js`    |
 | `CART‑02` | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Automated         | `tests/cart.spec.js`    |
 | `CART‑03` | Shopping Cart   | View shopping cart and remove item                | P2       | Automated         | `tests/cart.spec.js`    |
-| `CART‑04` | Shopping Cart   | Cart item persistence across page reload          | P3       | Automated         | `tests/cart.spec.js`    |
+| `CART‑04` | Shopping Cart   | Cart item persistence across page navigation      | P3       | Automated         | `tests/cart.spec.js`    |
 
 ---
 

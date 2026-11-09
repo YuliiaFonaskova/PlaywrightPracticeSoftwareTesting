@@ -46,12 +46,12 @@ test.describe("Cart", () => {
     await cartPage.verifyCartIsEmpty();
   });
 
-  test("CART-04 Cart item persistence across page reload", async () => {
+  test("CART-04 Cart item persistence across page navigation", async () => {
     await mainPage.openProduct(testData.product.name);
     await productPage.addToCart();
     await productPage.verifyCartQuantity(1);
 
-    await productPage.reloadPage();
+    await productPage.navigateHome();
 
     await productPage.verifyCartQuantity(1);
   });

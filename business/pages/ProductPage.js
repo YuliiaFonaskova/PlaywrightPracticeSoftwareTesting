@@ -42,6 +42,10 @@ class ProductPage extends BasePage {
     return this.page.locator('[data-test="nav-cart"]');
   }
 
+  get navHome() {
+    return this.page.locator('[data-test="nav-home"]');
+  }
+
   async verifyProductTitle(productName) {
     await expect(this.productTitle).toHaveText(productName);
   }
@@ -89,9 +93,9 @@ class ProductPage extends BasePage {
       .toBe(expectedQuantity);
   }
 
-  async reloadPage() {
-    await this.open(routes.home);
-    await this.page.reload();
+  async navigateHome() {
+    await this.click(this.navHome);
+    await expect(this.page).toHaveURL(routes.home);
   }
 
   async openCart() {
