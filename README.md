@@ -23,24 +23,24 @@ The project follows a layered architecture:
 
 Detailed test cases, preconditions, step-by-step UI actions, and expansion roadmaps are documented in [docs/test-cases.md](docs/test-cases.md).
 
-| ID          | Suite           | Title                                             | Priority | Automation Status  | Spec File               |
-| :---------- | :-------------- | :------------------------------------------------ | :------- | :----------------- | :---------------------- |
-| **AUTH-01** | Authentication  | Successful login with valid credentials           | P1       | Automated          | `tests/login.spec.js`   |
-| **AUTH-02** | Authentication  | Unsuccessful login with invalid credentials       | P1       | Automated          | `tests/login.spec.js`   |
-| **AUTH-03** | Authentication  | Validation on empty email and password submission | P2       | Manual (Candidate) | —                       |
-| **AUTH-04** | Authentication  | Validation on malformed email address format      | P2       | Manual (Candidate) | —                       |
-| **AUTH-05** | Authentication  | Password input masking and security display       | P3       | Manual             | —                       |
-| **SRCH-01** | Search          | Search products with matching keyword             | P1       | Automated          | `tests/search.spec.js`  |
-| **SRCH-02** | Search          | Search with non-matching query (no results)       | P2       | Manual (Candidate) | —                       |
-| **SRCH-03** | Search          | Search with empty query / reset search filter     | P3       | Manual             | —                       |
-| **SRCH-04** | Search          | Search keyword case-insensitivity verification    | P2       | Manual (Candidate) | —                       |
-| **PRD-01**  | Product Details | View product details page and verify title        | P1       | Automated          | `tests/product.spec.js` |
-| **PRD-02**  | Product Details | Verify product price and description details      | P2       | Manual (Candidate) | —                       |
-| **PRD-03**  | Product Details | Product out-of-stock badge and button status      | P3       | Manual             | —                       |
-| **CART-01** | Shopping Cart   | Add product to cart from product details page     | P1       | Automated          | `tests/cart.spec.js`    |
-| **CART-02** | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Manual (Candidate) | —                       |
-| **CART-03** | Shopping Cart   | View shopping cart and remove item                | P2       | Manual (Candidate) | —                       |
-| **CART-04** | Shopping Cart   | Cart item persistence across page reload          | P3       | Manual             | —                       |
+| ID        | Suite           | Title                                             | Priority | Automation Status  | Spec File               |
+| :-------- | :-------------- | :------------------------------------------------ | :------- | :----------------- | :---------------------- |
+| `AUTH‑01` | Authentication  | Successful login with valid credentials           | P1       | Automated          | `tests/login.spec.js`   |
+| `AUTH‑02` | Authentication  | Unsuccessful login with invalid credentials       | P1       | Automated          | `tests/login.spec.js`   |
+| `AUTH‑03` | Authentication  | Validation on empty email and password submission | P2       | Automated          | `tests/login.spec.js`   |
+| `AUTH‑04` | Authentication  | Validation on malformed email address format      | P2       | Automated          | `tests/login.spec.js`   |
+| `AUTH‑05` | Authentication  | Password input masking and security display       | P3       | Automated          | `tests/login.spec.js`   |
+| `SRCH‑01` | Search          | Search products with matching keyword             | P1       | Automated          | `tests/search.spec.js`  |
+| `SRCH‑02` | Search          | Search with non-matching query (no results)       | P2       | Manual (Candidate) | —                       |
+| `SRCH‑03` | Search          | Search with empty query / reset search filter     | P3       | Manual             | —                       |
+| `SRCH‑04` | Search          | Search keyword case-insensitivity verification    | P2       | Manual (Candidate) | —                       |
+| `PRD‑01`  | Product Details | View product details page and verify title        | P1       | Automated          | `tests/product.spec.js` |
+| `PRD‑02`  | Product Details | Verify product price and description details      | P2       | Manual (Candidate) | —                       |
+| `PRD‑03`  | Product Details | Product out-of-stock badge and button status      | P3       | Manual             | —                       |
+| `CART‑01` | Shopping Cart   | Add product to cart from product details page     | P1       | Automated          | `tests/cart.spec.js`    |
+| `CART‑02` | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Manual (Candidate) | —                       |
+| `CART‑03` | Shopping Cart   | View shopping cart and remove item                | P2       | Manual (Candidate) | —                       |
+| `CART‑04` | Shopping Cart   | Cart item persistence across page reload          | P3       | Manual             | —                       |
 
 ---
 

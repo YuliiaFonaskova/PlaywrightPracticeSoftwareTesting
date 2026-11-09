@@ -1,6 +1,7 @@
 {
   "invalid": {
     "email": "wrong@email.com",
-    "password": "wrongpassword"
+    "password": "wrongpassword",
+    "malformedEmail": "invalid-email"
   }
 }

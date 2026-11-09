@@ -6,24 +6,24 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 ## 1. Coverage Matrix
 
-| ID          | Suite           | Title                                             | Priority | Type                  | Automation Status  | Spec File               |
-| :---------- | :-------------- | :------------------------------------------------ | :------- | :-------------------- | :----------------- | :---------------------- |
-| **AUTH-01** | Authentication  | Successful login with valid credentials           | P1       | Positive / Functional | Automated          | `tests/login.spec.js`   |
-| **AUTH-02** | Authentication  | Unsuccessful login with invalid credentials       | P1       | Negative / Functional | Automated          | `tests/login.spec.js`   |
-| **AUTH-03** | Authentication  | Validation on empty email and password submission | P2       | Negative / Validation | Manual (Candidate) | —                       |
-| **AUTH-04** | Authentication  | Validation on malformed email address format      | P2       | Negative / Validation | Manual (Candidate) | —                       |
-| **AUTH-05** | Authentication  | Password input masking and security display       | P3       | Security / UI         | Manual             | —                       |
-| **SRCH-01** | Search          | Search products with matching keyword             | P1       | Positive / Functional | Automated          | `tests/search.spec.js`  |
-| **SRCH-02** | Search          | Search with non-matching query (no results)       | P2       | Negative / Functional | Manual (Candidate) | —                       |
-| **SRCH-03** | Search          | Search with empty query / reset search filter     | P3       | Edge / Functional     | Manual             | —                       |
-| **SRCH-04** | Search          | Search keyword case-insensitivity verification    | P2       | Functional            | Manual (Candidate) | —                       |
-| **PRD-01**  | Product Details | View product details page and verify title        | P1       | Positive / Functional | Automated          | `tests/product.spec.js` |
-| **PRD-02**  | Product Details | Verify product price and description details      | P2       | Functional / UI       | Manual (Candidate) | —                       |
-| **PRD-03**  | Product Details | Product out-of-stock badge and button status      | P3       | Edge / Functional     | Manual             | —                       |
-| **CART-01** | Shopping Cart   | Add product to cart from product details page     | P1       | Positive / Functional | Automated          | `tests/cart.spec.js`    |
-| **CART-02** | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Functional            | Manual (Candidate) | —                       |
-| **CART-03** | Shopping Cart   | View shopping cart and remove item                | P2       | Functional            | Manual (Candidate) | —                       |
-| **CART-04** | Shopping Cart   | Cart item persistence across page reload          | P3       | Functional / State    | Manual             | —                       |
+| ID        | Suite           | Title                                             | Priority | Type                  | Automation Status  | Spec File               |
+| :-------- | :-------------- | :------------------------------------------------ | :------- | :-------------------- | :----------------- | :---------------------- |
+| `AUTH‑01` | Authentication  | Successful login with valid credentials           | P1       | Positive / Functional | Automated          | `tests/login.spec.js`   |
+| `AUTH‑02` | Authentication  | Unsuccessful login with invalid credentials       | P1       | Negative / Functional | Automated          | `tests/login.spec.js`   |
+| `AUTH‑03` | Authentication  | Validation on empty email and password submission | P2       | Negative / Validation | Automated          | `tests/login.spec.js`   |
+| `AUTH‑04` | Authentication  | Validation on malformed email address format      | P2       | Negative / Validation | Automated          | `tests/login.spec.js`   |
+| `AUTH‑05` | Authentication  | Password input masking and security display       | P3       | Security / UI         | Automated          | `tests/login.spec.js`   |
+| `SRCH‑01` | Search          | Search products with matching keyword             | P1       | Positive / Functional | Automated          | `tests/search.spec.js`  |
+| `SRCH‑02` | Search          | Search with non-matching query (no results)       | P2       | Negative / Functional | Manual (Candidate) | —                       |
+| `SRCH‑03` | Search          | Search with empty query / reset search filter     | P3       | Edge / Functional     | Manual             | —                       |
+| `SRCH‑04` | Search          | Search keyword case-insensitivity verification    | P2       | Functional            | Manual (Candidate) | —                       |
+| `PRD‑01`  | Product Details | View product details page and verify title        | P1       | Positive / Functional | Automated          | `tests/product.spec.js` |
+| `PRD‑02`  | Product Details | Verify product price and description details      | P2       | Functional / UI       | Manual (Candidate) | —                       |
+| `PRD‑03`  | Product Details | Product out-of-stock badge and button status      | P3       | Edge / Functional     | Manual             | —                       |
+| `CART‑01` | Shopping Cart   | Add product to cart from product details page     | P1       | Positive / Functional | Automated          | `tests/cart.spec.js`    |
+| `CART‑02` | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Functional            | Manual (Candidate) | —                       |
+| `CART‑03` | Shopping Cart   | View shopping cart and remove item                | P2       | Functional            | Manual (Candidate) | —                       |
+| `CART‑04` | Shopping Cart   | Cart item persistence across page reload          | P3       | Functional / State    | Manual             | —                       |
 
 ---
 
@@ -77,7 +77,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P2
 - **Type:** Negative / Validation
-- **Automation Status:** Manual (Candidate)
+- **Automation Status:** Automated (`tests/login.spec.js`)
 - **Preconditions:** User is on the Login page.
 
 **Steps:**
@@ -96,7 +96,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P2
 - **Type:** Negative / Validation
-- **Automation Status:** Manual (Candidate)
+- **Automation Status:** Automated (`tests/login.spec.js`)
 - **Preconditions:** User is on the Login page.
 
 **Steps:**
@@ -116,7 +116,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P3
 - **Type:** Security / UI
-- **Automation Status:** Manual
+- **Automation Status:** Automated (`tests/login.spec.js`)
 - **Preconditions:** User is on the Login page.
 
 **Steps:**

@@ -24,4 +24,23 @@ test.describe("Login", () => {
 
     await loginPage.verifyLoginError(messages.loginError);
   });
+
+  test("AUTH-03 Validation on empty email and password submission", async () => {
+    await loginPage.submitEmptyForm();
+
+    await loginPage.verifyEmailError(messages.emailRequired);
+    await loginPage.verifyPasswordError(messages.passwordRequired);
+  });
+
+  test("AUTH-04 Validation on malformed email address format", async () => {
+    await loginPage.login(users.invalid.malformedEmail, users.invalid.password);
+
+    await loginPage.verifyEmailError(messages.invalidEmailFormat);
+  });
+
+  test("AUTH-05 Password input masking and security display", async () => {
+    await loginPage.enterPassword(users.invalid.password);
+
+    await loginPage.verifyPasswordIsMasked();
+  });
 });
