@@ -2,5 +2,6 @@
   "loginError": "Invalid email or password",
   "emailRequired": "Email is required",
   "passwordRequired": "Password is required",
-  "invalidEmailFormat": "Email format is invalid"
+  "invalidEmailFormat": "Email format is invalid",
+  "noProductsFound": "There are no products found."
 }

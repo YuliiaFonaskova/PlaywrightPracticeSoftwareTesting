@@ -1,6 +1,7 @@
 {
   "product": {
     "searchRequest": "gloves",
+    "invalidSearchRequest": "nonexistentproductxyz123",
     "name": "Combination Pliers"
   }
 }

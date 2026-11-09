@@ -11,8 +11,20 @@ class MainPage extends BasePage {
     return this.page.locator('[data-test="search-submit"]');
   }
 
+  get searchResetButton() {
+    return this.page.locator('[data-test="search-reset"]');
+  }
+
   get productTitles() {
     return this.page.locator('[data-test="product-name"]');
+  }
+
+  get searchCompleted() {
+    return this.page.locator('[data-test="search_completed"]');
+  }
+
+  get noResultsMessage() {
+    return this.page.locator('[data-test="no-results"]');
   }
 
   async open(path = routes.home) {
@@ -34,10 +46,23 @@ class MainPage extends BasePage {
     const response = await searchResponse;
     expect(response.status()).toBe(200);
 
-    await expect(this.productTitles.first()).toBeVisible();
+    await expect(this.searchCompleted).toBeVisible();
+  }
+
+  async resetSearch() {
+    await this.searchResetButton.click();
+    await expect(this.searchField).toHaveValue("");
+  }
+
+  async verifyCatalogRestored(filteredCount) {
+    await expect
+      .poll(async () => await this.productTitles.count())
+      .toBeGreaterThan(filteredCount);
   }
 
   async verifySearchResults(searchRequest) {
+    await expect(this.productTitles.first()).toBeVisible();
+
     const titles = await this.productTitles.allTextContents();
 
     expect(titles.length).toBeGreaterThan(0);
@@ -47,6 +72,21 @@ class MainPage extends BasePage {
         searchRequest.trim().toLowerCase()
       );
     }
+  }
+
+  async verifyNoSearchResults(expectedMessage) {
+    await expect(this.noResultsMessage).toHaveText(expectedMessage);
+    await expect(this.productTitles).toHaveCount(0);
+  }
+
+  async getProductTitlesList() {
+    await expect(this.productTitles.first()).toBeVisible();
+    const titles = await this.productTitles.allTextContents();
+    return titles.map((title) => title.trim());
+  }
+
+  async verifyEqualResults(firstResults, secondResults) {
+    expect(firstResults).toEqual(secondResults);
   }
 
   async openProduct(productName) {
@@ -61,4 +101,5 @@ class MainPage extends BasePage {
     await expect(this.page).toHaveURL(routes.product);
   }
 }
+
 module.exports = MainPage;
