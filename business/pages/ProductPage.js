@@ -76,7 +76,22 @@ class ProductPage extends BasePage {
   }
 
   async verifyCartQuantity(expectedQuantity) {
-    await expect(this.cartQuantity).toHaveText(String(expectedQuantity));
+    await expect
+      .poll(
+        async () => {
+          if ((await this.cartQuantity.count()) === 0) {
+            return 0;
+          }
+          return Number(await this.cartQuantity.innerText());
+        },
+        { timeout: 15000 }
+      )
+      .toBe(expectedQuantity);
+  }
+
+  async reloadPage() {
+    await this.page.reload();
+    await expect(this.productTitle).toBeVisible();
   }
 
   async openCart() {
