@@ -3,5 +3,6 @@
   "emailRequired": "Email is required",
   "passwordRequired": "Password is required",
   "invalidEmailFormat": "Email format is invalid",
-  "noProductsFound": "There are no products found."
+  "noProductsFound": "There are no products found.",
+  "outOfStock": "Out of stock"
 }

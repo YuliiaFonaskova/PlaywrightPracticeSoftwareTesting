@@ -2,6 +2,8 @@
   "product": {
     "searchRequest": "gloves",
     "invalidSearchRequest": "nonexistentproductxyz123",
-    "name": "Combination Pliers"
+    "name": "Combination Pliers",
+    "outOfStockName": "Long Nose Pliers",
+    "multipleQuantity": 3
   }
 }

@@ -6,24 +6,26 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 ## 1. Coverage Matrix
 
-| ID        | Suite           | Title                                             | Priority | Type                  | Automation Status  | Spec File               |
-| :-------- | :-------------- | :------------------------------------------------ | :------- | :-------------------- | :----------------- | :---------------------- |
-| `AUTH‑01` | Authentication  | Successful login with valid credentials           | P1       | Positive / Functional | Automated          | `tests/login.spec.js`   |
-| `AUTH‑02` | Authentication  | Unsuccessful login with invalid credentials       | P1       | Negative / Functional | Automated          | `tests/login.spec.js`   |
-| `AUTH‑03` | Authentication  | Validation on empty email and password submission | P2       | Negative / Validation | Automated          | `tests/login.spec.js`   |
-| `AUTH‑04` | Authentication  | Validation on malformed email address format      | P2       | Negative / Validation | Automated          | `tests/login.spec.js`   |
-| `AUTH‑05` | Authentication  | Password input masking and security display       | P3       | Security / UI         | Automated          | `tests/login.spec.js`   |
-| `SRCH‑01` | Search          | Search products with matching keyword             | P1       | Positive / Functional | Automated          | `tests/search.spec.js`  |
-| `SRCH‑02` | Search          | Search with non-matching query (no results)       | P2       | Negative / Functional | Automated          | `tests/search.spec.js`  |
-| `SRCH‑03` | Search          | Search with empty query / reset search filter     | P3       | Edge / Functional     | Automated          | `tests/search.spec.js`  |
-| `SRCH‑04` | Search          | Search keyword case-insensitivity verification    | P2       | Functional            | Automated          | `tests/search.spec.js`  |
-| `PRD‑01`  | Product Details | View product details page and verify title        | P1       | Positive / Functional | Automated          | `tests/product.spec.js` |
-| `PRD‑02`  | Product Details | Verify product price and description details      | P2       | Functional / UI       | Manual (Candidate) | —                       |
-| `PRD‑03`  | Product Details | Product out-of-stock badge and button status      | P3       | Edge / Functional     | Manual             | —                       |
-| `CART‑01` | Shopping Cart   | Add product to cart from product details page     | P1       | Positive / Functional | Automated          | `tests/cart.spec.js`    |
-| `CART‑02` | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Functional            | Manual (Candidate) | —                       |
-| `CART‑03` | Shopping Cart   | View shopping cart and remove item                | P2       | Functional            | Manual (Candidate) | —                       |
-| `CART‑04` | Shopping Cart   | Cart item persistence across page reload          | P3       | Functional / State    | Manual             | —                       |
+**Coverage Summary:** **16 / 16 (100%)** documented test cases are automated across **4** functional suites (**48** total test runs across Chromium, Firefox, and WebKit).
+
+| ID        | Suite           | Title                                             | Priority | Type                  | Automation Status | Spec File               |
+| :-------- | :-------------- | :------------------------------------------------ | :------- | :-------------------- | :---------------- | :---------------------- |
+| `AUTH‑01` | Authentication  | Successful login with valid credentials           | P1       | Positive / Functional | Automated         | `tests/login.spec.js`   |
+| `AUTH‑02` | Authentication  | Unsuccessful login with invalid credentials       | P1       | Negative / Functional | Automated         | `tests/login.spec.js`   |
+| `AUTH‑03` | Authentication  | Validation on empty email and password submission | P2       | Negative / Validation | Automated         | `tests/login.spec.js`   |
+| `AUTH‑04` | Authentication  | Validation on malformed email address format      | P2       | Negative / Validation | Automated         | `tests/login.spec.js`   |
+| `AUTH‑05` | Authentication  | Password input masking and security display       | P3       | Security / UI         | Automated         | `tests/login.spec.js`   |
+| `SRCH‑01` | Search          | Search products with matching keyword             | P1       | Positive / Functional | Automated         | `tests/search.spec.js`  |
+| `SRCH‑02` | Search          | Search with non-matching query (no results)       | P2       | Negative / Functional | Automated         | `tests/search.spec.js`  |
+| `SRCH‑03` | Search          | Search with empty query / reset search filter     | P3       | Edge / Functional     | Automated         | `tests/search.spec.js`  |
+| `SRCH‑04` | Search          | Search keyword case-insensitivity verification    | P2       | Functional            | Automated         | `tests/search.spec.js`  |
+| `PRD‑01`  | Product Details | View product details page and verify title        | P1       | Positive / Functional | Automated         | `tests/product.spec.js` |
+| `PRD‑02`  | Product Details | Verify product price and description details      | P2       | Functional / UI       | Automated         | `tests/product.spec.js` |
+| `PRD‑03`  | Product Details | Product out-of-stock badge and button status      | P3       | Edge / Functional     | Automated         | `tests/product.spec.js` |
+| `CART‑01` | Shopping Cart   | Add product to cart from product details page     | P1       | Positive / Functional | Automated         | `tests/cart.spec.js`    |
+| `CART‑02` | Shopping Cart   | Add multiple quantities of product to cart        | P2       | Functional            | Automated         | `tests/cart.spec.js`    |
+| `CART‑03` | Shopping Cart   | View shopping cart and remove item                | P2       | Functional            | Automated         | `tests/cart.spec.js`    |
+| `CART‑04` | Shopping Cart   | Cart item persistence across page reload          | P3       | Functional / State    | Automated         | `tests/cart.spec.js`    |
 
 ---
 
@@ -235,7 +237,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P2
 - **Type:** Functional / UI
-- **Automation Status:** Manual (Candidate)
+- **Automation Status:** Automated (`tests/product.spec.js`)
 - **Preconditions:** User is on the Product Details page.
 
 **Steps:**
@@ -254,7 +256,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P3
 - **Type:** Edge / Functional
-- **Automation Status:** Manual
+- **Automation Status:** Automated (`tests/product.spec.js`)
 - **Preconditions:** Catalog contains a product marked out of stock.
 
 **Steps:**
@@ -295,7 +297,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P2
 - **Type:** Functional
-- **Automation Status:** Manual (Candidate)
+- **Automation Status:** Automated (`tests/cart.spec.js`)
 - **Preconditions:** User is on the Product Details page.
 
 **Steps:**
@@ -315,7 +317,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P2
 - **Type:** Functional
-- **Automation Status:** Manual (Candidate)
+- **Automation Status:** Automated (`tests/cart.spec.js`)
 - **Preconditions:** Shopping cart contains at least one item.
 
 **Steps:**
@@ -334,7 +336,7 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 - **Priority:** P3
 - **Type:** Functional / State
-- **Automation Status:** Manual
+- **Automation Status:** Automated (`tests/cart.spec.js`)
 - **Preconditions:** At least one item has been added to the shopping cart.
 
 **Steps:**
@@ -353,24 +355,22 @@ This document contains test cases for the **Practice Software Testing** web appl
 
 1. **Test Environment Dependency:**
    - Tests rely on a live public demo instance (`https://practicesoftwaretesting.com`). Network latency, rate limiting, or backend downtime can cause intermittent failures.
-2. **Dynamic Catalog Changes:**
-   - Default product names (e.g. "Hammer") and search results are subject to changes in the demo database. Environment variables (`PRODUCT_NAME`, `SEARCH_REQUEST`) must align with active catalog contents.
+2. **Dynamic Catalog & Demo Account State:**
+   - Default product names (e.g. `Combination Pliers`, `Long Nose Pliers`) and shared demo user accounts are subject to changes or temporary lockouts in the public demo database.
 3. **Cart Badge Timing:**
-   - The cart quantity badge updates asynchronously after adding an item to the cart. Test implementation currently uses polling (`expect.poll`) to avoid race conditions.
-4. **Validation Coverage Gap:**
-   - Current automated suites only cover positive login and generic invalid credential error. Form field validation (empty inputs, regex email checks) is not yet covered by automated tests.
-5. **No End-to-End Checkout Flow:**
-   - Checkout progression (Billing address, Payment method, Order confirmation) is currently unautomated.
+   - The cart quantity badge updates asynchronously after adding an item to the cart. Test implementation uses auto-retrying assertions and polling (`expect.poll`) to avoid race conditions.
+4. **No End-to-End Checkout Flow Yet:**
+   - Multi-step checkout progression after the cart step (Sign In → Billing Address → Payment Method → Order Confirmation) is not yet covered by automated tests.
 
 ---
 
 ## 4. What to Automate Next
 
-1. **`AUTH-03` & `AUTH-04` (Login Form Validation):**
-   - High value, low maintenance: automated checks for empty fields and malformed email errors.
-2. **`SRCH-02` (Negative Search Scenario):**
-   - Verifying empty state behavior or "No products found" message when searching for non-existent items.
-3. **`CART-03` (Shopping Cart View & Removal):**
-   - Navigating to the cart page, verifying items in the table, and removing an item to confirm total updates.
-4. **Checkout Workflow (End-to-End):**
-   - Multi-step checkout pipeline: Cart → Sign In → Address Information → Payment Method → Order Confirmation.
+1. **Checkout Workflow (End-to-End):**
+   - Multi-step checkout pipeline: Cart → Sign In → Billing Address Information → Payment Method Selection → Order Confirmation.
+2. **Catalog Filtering & Sorting:**
+   - Filtering products by category, brand, price range slider, and eco-friendly sustainability rating, as well as sorting by name and price.
+3. **User Registration & Profile Management:**
+   - New customer registration form validation, profile updates, and viewing order history/invoices.
+4. **Contact Form & Favourites:**
+   - Submitting customer support inquiries via `/contact` and adding/removing products from user favourites.
