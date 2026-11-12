@@ -1,6 +1,5 @@
 const BasePage = require("../../core/BasePage");
 const routes = require("../routes");
-const { expect } = require("@playwright/test");
 
 class MainPage extends BasePage {
   get searchField() {
@@ -29,13 +28,11 @@ class MainPage extends BasePage {
 
   async open(path = routes.home) {
     await super.open(path);
-    await expect(this.productTitles.first()).toBeVisible();
+    await this.productTitles.first().waitFor({ state: "visible" });
   }
 
   async searchProduct(request) {
     await this.searchField.fill(request);
-
-    await expect(this.searchField).toHaveValue(request);
 
     const searchResponse = this.page.waitForResponse((response) =>
       response.url().includes(routes.productSearchEndpoint)
@@ -44,49 +41,18 @@ class MainPage extends BasePage {
     await this.searchButton.click();
 
     const response = await searchResponse;
-    expect(response.status()).toBe(200);
-
-    await expect(this.searchCompleted).toBeVisible();
+    await this.searchCompleted.waitFor({ state: "visible" });
+    return response;
   }
 
   async resetSearch() {
     await this.searchResetButton.click();
-    await expect(this.searchField).toHaveValue("");
-  }
-
-  async verifyCatalogRestored(filteredCount) {
-    await expect
-      .poll(async () => await this.productTitles.count())
-      .toBeGreaterThan(filteredCount);
-  }
-
-  async verifySearchResults(searchRequest) {
-    await expect(this.productTitles.first()).toBeVisible();
-
-    const titles = await this.productTitles.allTextContents();
-
-    expect(titles.length).toBeGreaterThan(0);
-
-    for (const title of titles) {
-      expect(title.trim().toLowerCase()).toContain(
-        searchRequest.trim().toLowerCase()
-      );
-    }
-  }
-
-  async verifyNoSearchResults(expectedMessage) {
-    await expect(this.noResultsMessage).toHaveText(expectedMessage);
-    await expect(this.productTitles).toHaveCount(0);
   }
 
   async getProductTitlesList() {
-    await expect(this.productTitles.first()).toBeVisible();
+    await this.productTitles.first().waitFor({ state: "visible" });
     const titles = await this.productTitles.allTextContents();
     return titles.map((title) => title.trim());
-  }
-
-  async verifyEqualResults(firstResults, secondResults) {
-    expect(firstResults).toEqual(secondResults);
   }
 
   async openProduct(productName) {
@@ -94,11 +60,9 @@ class MainPage extends BasePage {
       hasText: productName,
     });
 
-    await expect(product).toHaveCount(1);
-    await expect(product).toBeVisible();
+    await product.waitFor({ state: "visible" });
     await product.click();
-
-    await expect(this.page).toHaveURL(routes.product);
+    await this.page.waitForURL(routes.product);
   }
 }
 

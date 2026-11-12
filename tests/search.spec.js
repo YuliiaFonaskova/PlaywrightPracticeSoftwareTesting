@@ -1,7 +1,15 @@
-const { test } = require("@playwright/test");
+const { test, expect } = require("@playwright/test");
 const MainPage = require("../business/pages/MainPage");
 const testData = require("../fixtures/testData.json");
 const messages = require("../fixtures/messages.json");
+
+function expectMatchingTitles(titles, searchRequest) {
+  expect(titles.length).toBeGreaterThan(0);
+
+  for (const title of titles) {
+    expect(title.toLowerCase()).toContain(searchRequest.trim().toLowerCase());
+  }
+}
 
 test.describe("Search", () => {
   let mainPage;
@@ -13,15 +21,25 @@ test.describe("Search", () => {
   });
 
   test("SRCH-01 Search product successfully", async () => {
-    await mainPage.searchProduct(testData.product.searchRequest);
+    const response = await mainPage.searchProduct(
+      testData.product.searchRequest
+    );
+    expect(response.status()).toBe(200);
 
-    await mainPage.verifySearchResults(testData.product.searchRequest);
+    const titles = await mainPage.getProductTitlesList();
+    expectMatchingTitles(titles, testData.product.searchRequest);
   });
 
   test("SRCH-02 Search with non-matching query (no results)", async () => {
-    await mainPage.searchProduct(testData.product.invalidSearchRequest);
+    const response = await mainPage.searchProduct(
+      testData.product.invalidSearchRequest
+    );
+    expect(response.status()).toBe(200);
 
-    await mainPage.verifyNoSearchResults(messages.noProductsFound);
+    await expect(mainPage.noResultsMessage).toHaveText(
+      messages.noProductsFound
+    );
+    await expect(mainPage.productTitles).toHaveCount(0);
   });
 
   test("SRCH-03 Search with empty query / reset search filter", async () => {
@@ -30,7 +48,10 @@ test.describe("Search", () => {
 
     await mainPage.resetSearch();
 
-    await mainPage.verifyCatalogRestored(filteredResults.length);
+    await expect(mainPage.searchField).toHaveValue("");
+    await expect
+      .poll(() => mainPage.productTitles.count())
+      .toBeGreaterThan(filteredResults.length);
   });
 
   test("SRCH-04 Search keyword case-insensitivity verification", async () => {
@@ -38,13 +59,13 @@ test.describe("Search", () => {
     const lowercaseQuery = testData.product.searchRequest.toLowerCase();
 
     await mainPage.searchProduct(uppercaseQuery);
-    await mainPage.verifySearchResults(uppercaseQuery);
     const uppercaseResults = await mainPage.getProductTitlesList();
+    expectMatchingTitles(uppercaseResults, uppercaseQuery);
 
     await mainPage.searchProduct(lowercaseQuery);
-    await mainPage.verifySearchResults(lowercaseQuery);
     const lowercaseResults = await mainPage.getProductTitlesList();
+    expectMatchingTitles(lowercaseResults, lowercaseQuery);
 
-    await mainPage.verifyEqualResults(uppercaseResults, lowercaseResults);
+    expect(uppercaseResults).toEqual(lowercaseResults);
   });
 });
