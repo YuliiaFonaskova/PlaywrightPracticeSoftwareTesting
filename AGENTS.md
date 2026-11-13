@@ -13,14 +13,29 @@ npm test
 
 Three layers, import style is CommonJS (`require`/`module.exports`):
 
-| Layer    | Directory                              | Purpose                                              |
-| -------- | -------------------------------------- | ---------------------------------------------------- |
-| Core     | `core/BasePage.js`                     | Low-level helpers (open, click, fill, getText)       |
-| Business | `business/pages/*.js`, `business/*.js` | Page Objects + selectors via `data-test` attributes  |
-| Fixtures | `fixtures/*.json`                      | Static test data (messages, testData, invalid users) |
-| Tests    | `tests/*.spec.js`                      | Playwright test specs                                |
+| Layer    | Directory                              | Purpose                                                                       |
+| -------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| Core     | `core/BasePage.js`                     | Low-level helpers (open, click, fill, getText)                                |
+| Business | `business/pages/*.js`, `business/*.js` | Page Objects (locators, actions, state getters) + centralized `routes.js`     |
+| Fixtures | `fixtures/*.json`                      | Static test data (messages, testData, invalid users)                          |
+| Tests    | `tests/*.spec.js`                      | Playwright test specs and all `expect` assertions                             |
+| Docs     | `docs/test-cases.md`                   | Manual test cases & coverage matrix mapped by ID (`AUTH-01`, `SRCH-01`, etc.) |
 
 Every Page Object extends `BasePage`, whose constructor takes a Playwright `page` fixture.
+
+## Design Rules & Conventions
+
+1. **No Assertions in Page Objects (Strict POM):**
+   - **Page Objects (`business/pages/*.js`)** must ONLY expose locators (`get ...()`), user actions, state retrieval methods (e.g., `getCartQuantity()`, `getProductTitlesList()`), and synchronization (`locator.waitFor()`, `page.waitForURL()`, `page.waitForResponse()`). **Never import or use `expect` inside Page Objects.**
+   - **Tests (`tests/*.spec.js`)** own all verifications (`expect`, `expect.poll`). If multiple tests in a spec share the same group of assertions, use a local helper function (`expectCartItem`, `expectMatchingTitles`) inside that spec file.
+2. **Synchronization & Waits:**
+   - Never use `page.waitForTimeout()` (hard waits) or inline magic timeout numbers (e.g., `{ timeout: 15000 }`) in tests.
+   - Always register `page.waitForResponse()` **before** triggering the action (such as `.click()`) to avoid race conditions.
+3. **Selectors & Routes:**
+   - Prefer `[data-test="..."]` attributes for locators.
+   - Store all URL paths, route regexes, and API endpoint substrings in `business/routes.js` rather than hardcoding them in Page Objects or specs.
+4. **Traceability:**
+   - Prefix every test title with its ID from `docs/test-cases.md` (e.g., `AUTH-01`, `SRCH-01`, `PRD-01`, `CART-01`). When adding new automated tests, update the coverage matrix in `docs/test-cases.md` and `README.md`.
 
 ## Key Quirk: ESLint vs. Module System
 
