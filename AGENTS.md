@@ -61,8 +61,6 @@ A Git pre-commit hook (`.husky/pre-commit`) automatically runs `npx lint-staged`
 
 `.github/workflows/playwright.yml` runs: `npm run lint` → `npx prettier --check .` → `npx playwright test`. GitHub Actions requires secrets (`USER_EMAIL`, `USER_PASSWORD`) — CI will fail without them.
 
-The Jenkinsfile (`Jenkinsfile`) uses credentials (`USER_EMAIL`, `USER_PASSWORD`) and runs `npm ci` → `npx playwright install` → `npm test`.
-
 ## Test Data
 
 Valid user credentials come from environment variables (`USER_EMAIL`, `USER_PASSWORD`, read via `dotenv.config()` at top of `playwright.config.js`). Static test data, invalid credentials, and error messages are stored in `fixtures/*.json` and imported directly into specs. Do not hardcode values in specs.
