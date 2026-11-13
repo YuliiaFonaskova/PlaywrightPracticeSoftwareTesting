@@ -8,7 +8,19 @@
     "test:chrome": "playwright test --project=chromium",
     "report": "playwright show-report",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run format:check",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -20,6 +32,8 @@
     "@types/node": "^26.0.1",
     "eslint": "^9.39.4",
     "globals": "^17.7.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.9.4"
   },
   "dependencies": {

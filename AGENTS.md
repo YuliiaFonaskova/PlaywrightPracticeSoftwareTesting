@@ -52,9 +52,12 @@ ESLint config (`eslint.config.js`) declares `sourceType: "module"`, but the code
 | Show HTML report  | `npm run report`                          |
 | Lint              | `npm run lint`                            |
 | Format (write)    | `npm run format`                          |
-| Check format (CI) | `npx prettier --check .`                  |
+| Check format (CI) | `npm run format:check`                    |
+| Lint + Format     | `npm run check`                           |
 
-## CI Order
+## Pre-commit Hook & CI Order
+
+A Git pre-commit hook (`.husky/pre-commit`) automatically runs `npx lint-staged` (`eslint --fix` and `prettier --write`) on all staged files before every commit.
 
 `.github/workflows/playwright.yml` runs: `npm run lint` → `npx prettier --check .` → `npx playwright test`. GitHub Actions requires secrets (`USER_EMAIL`, `USER_PASSWORD`) — CI will fail without them.
 
